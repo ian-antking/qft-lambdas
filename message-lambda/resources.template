@@ -1,11 +1,11 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Resources": {
-        "qft-message-lambda": {
+        "qftMessageLambda": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
                 "FunctionName": "sendMessage",
-                "Handler": "lambda/index.handler",
+                "Handler": "index.handler",
                 "Role": {
                     "Fn::GetAtt": [
                         "qftMessageLambdaRole",
@@ -16,7 +16,7 @@
                     "S3Bucket": "qft-lambdas",
                     "S3Key": "qft-message-lambda-code"
                 },
-                "Runtime": "nodejs8.10",
+                "Runtime": "nodejs12.x",
                 "Timeout": 300
             }
         },
