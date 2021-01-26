@@ -1,0 +1,66 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "qft-message-lambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "FunctionName": "sendMessage",
+                "Handler": "lambda/index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "qftMessageLambdaRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "S3Bucket": "qft-lambdas",
+                    "S3Key": "qft-message-lambda-code"
+                },
+                "Runtime": "nodejs8.10",
+                "Timeout": 300
+            }
+        },
+        "qftMessageLambdaRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": "qft-message-lambda-role",
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "AWSLambdaBasicExecutionRole",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "logs:CreateLogGroup",
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
