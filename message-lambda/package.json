@@ -9,5 +9,8 @@
     "deploy:stack": "aws cloudformation update-stack --stack-name qft-message-lambda --template-body file://./resources.template --capabilities CAPABILITY_NAMED_IAM"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
 }
