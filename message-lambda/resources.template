@@ -15,7 +15,7 @@
                 "Code": {
                     "S3Bucket": "qft-lambdas",
                     "S3Key": "qft-message-lambda-code",
-                    "S3ObjectVersion": "k8DVK8kTVlLmYOtS.3WX.QP1mTZG7BzK"
+                    "S3ObjectVersion": "wT4PbHWiKkbYV.GXKSAx2MKbgLoD7prE"
                 },
                 "Runtime": "nodejs12.x",
                 "Timeout": 300
