@@ -1,0 +1,17 @@
+{
+  "name": "message-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "zip -r dist.zip ./node_modules ./*.js",
+    "deploy:bucket": "sh ../scripts/deploy-bucket.sh qft-lambdas",
+    "deploy:code": "sh ../scripts/deploy-code.sh qft-lambdas sendMessageToSlack",
+    "deploy:stack": "sh ../scripts/deploy-stack.js qft-sendMessageToSlack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "parameterKey": "Environment",
+        "parameterValue": "test"
+    },
+    {
+        "parameterKey": "FunctionName",
+        "parameterValue": "sendMessageToSlack"
+    },
+    {
+        "parameterKey": "Version",
+        "parameterValue": "weZKSwbOpe.OlZrRC_tvVZPxDxKQaLFx" 
+    }
+]
