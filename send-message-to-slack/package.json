@@ -7,7 +7,7 @@
     "bundle": "zip -r dist.zip ./node_modules ./*.js",
     "deploy:bucket": "sh ../scripts/deploy-bucket.sh qft-lambdas",
     "deploy:code": "sh ../scripts/deploy-code.sh qft-lambdas sendMessageToSlack",
-    "deploy:stack": "sh ../scripts/deploy-stack.sh qft-sendMessageToSlack"
+    "deploy:stack": "sh ../scripts/deploy-stack.sh qft-sendMessageToSlack-lambda"
   },
   "author": "",
   "license": "ISC",

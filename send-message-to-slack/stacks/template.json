@@ -19,7 +19,7 @@
         "LambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
-                "FunctionName": {"Fn::Sub": "${Environment}.${FunctionName}"},
+                "FunctionName": {"Fn::Sub": "${Environment}-${FunctionName}"},
                 "Handler": "index.handler",
                 "Role": {
                     "Fn::GetAtt": [
@@ -28,9 +28,9 @@
                     ]
                 },
                 "Code": {
-                    "S3Bucket": "qft-lambdas",
+                    "S3Bucket": {"Fn::Sub": "${Environment}.qft-lambdas"},
                     "S3Key": {"Fn::Sub": "${FunctionName}-src"},
-                    "S3ObjectVersion": "LHqoUs_08IcroMv7k0RHnUxmEyelW3n_"
+                    "S3ObjectVersion": {"Fn::Sub": "${Version}"}
                 },
                 "Runtime": "nodejs12.x",
                 "Timeout": 300
@@ -39,7 +39,7 @@
         "LambdaRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
-                "RoleName": {"Fn::Sub": "${Environment}.${FunctionName}-role"},
+                "RoleName": {"Fn::Sub": "${Environment}-${FunctionName}-role"},
                 "AssumeRolePolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [
