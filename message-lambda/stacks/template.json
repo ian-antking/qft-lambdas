@@ -1,30 +1,45 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Template for lambda function.",
+    "Parameters": {
+        "Environment": {
+            "Type": "String",
+            "Description": "Environment to deploy lambda to"
+        },
+        "FunctionName": {
+            "Type": "String",
+            "Description": "The name of the lambda function"
+        },
+        "Version": {
+            "Type": "String",
+            "Description": "S3 object version"
+        }
+    },
     "Resources": {
-        "qftMessageLambda": {
+        "LambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
-                "FunctionName": "sendMessage",
+                "FunctionName": {"Fn::Sub": "${Environment}.${FunctionName}"},
                 "Handler": "index.handler",
                 "Role": {
                     "Fn::GetAtt": [
-                        "qftMessageLambdaRole",
+                        "LambdaRole",
                         "Arn"
                     ]
                 },
                 "Code": {
                     "S3Bucket": "qft-lambdas",
-                    "S3Key": "qft-message-lambda-code",
+                    "S3Key": {"Fn::Sub": "${Environment}.${FunctionName}-code"},
                     "S3ObjectVersion": "LHqoUs_08IcroMv7k0RHnUxmEyelW3n_"
                 },
                 "Runtime": "nodejs12.x",
                 "Timeout": 300
             }
         },
-        "qftMessageLambdaRole": {
+        "LambdaRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
-                "RoleName": "qft-message-lambda-role",
+                "RoleName": {"Fn::Sub": "${Environment}.${FunctionName}-role"},
                 "AssumeRolePolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [
