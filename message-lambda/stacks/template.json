@@ -29,7 +29,7 @@
                 },
                 "Code": {
                     "S3Bucket": "qft-lambdas",
-                    "S3Key": {"Fn::Sub": "${Environment}.${FunctionName}-code"},
+                    "S3Key": {"Fn::Sub": "${Environment}.${FunctionName}-src"},
                     "S3ObjectVersion": "LHqoUs_08IcroMv7k0RHnUxmEyelW3n_"
                 },
                 "Runtime": "nodejs12.x",
