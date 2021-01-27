@@ -8,4 +8,4 @@ if [ -z "$STACK_NAME" ] || [ -z "$ENVIRONMENT" ]; then
     exit 1
 fi
 
-aws cloudformation update-stack --stack-name ${ENVIRONMENT}.${STACK_NAME} --template-body file://./stacks/template.json --parameters file://./stacks/parameters/${ENVIRONMENT}.json --capabilities CAPABILITY_NAMED_IAM
+aws cloudformation update-stack --stack-name ${ENVIRONMENT}-${STACK_NAME} --template-body file://./stacks/template.json --parameters file://./stacks/parameters/${ENVIRONMENT}.json --capabilities CAPABILITY_NAMED_IAM
