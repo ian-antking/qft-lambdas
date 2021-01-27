@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle": "zip -r dist.zip .",
+    "bundle": "zip -r dist.zip ./node_modules ./*.js",
+    "deploy:bucket": "sh ./scripts/create-bucket.sh",
     "deploy:code": "aws s3api put-object  --bucket qft-lambdas --key qft-message-lambda-code --region eu-west-2 --body ./dist.zip",
     "deploy:stack": "aws cloudformation update-stack --stack-name qft-message-lambda --template-body file://./resources.template --capabilities CAPABILITY_NAMED_IAM"
   },
